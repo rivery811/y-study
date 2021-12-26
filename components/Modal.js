@@ -1,18 +1,20 @@
 import styled from "styled-components";
-import LoginImage from "../public/images/modalLogin.svg";
-import CloseImage from "../public/images/close.svg";
+import ModalImg from "../public/images/modalJoin.svg";
+import Times from "../public/images/close.svg";
+
 const Modal = ({ title, width, height }) => (
   <Container>
-    <ModalContainer wsize={width} hsize={height}>
+    <ModalWrapper wsize={width} hsize={height}>
       <ModalTitle>
-        <LoginImage />
+        <ModalImg />
         <TitleText>{title}</TitleText>
-        <Line />
-        <CloseImage />
+        <Times />
       </ModalTitle>
-    </ModalContainer>
+      <Line />
+    </ModalWrapper>
   </Container>
 );
+
 export default Modal;
 
 const Container = styled.div`
@@ -26,22 +28,28 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const ModalContainer = styled.div`
-  width: ${(props) => (props.width ? props.width : 641)}px;
-  height: ${(props) => (props.height ? props.height : 638)}px;
+
+const ModalWrapper = styled.div`
+  width: ${(props) => (props.wsize ? props.wsize : 638)}px;
+  height: ${(props) => (props.hsize ? props.hsize : 438)}px;
   z-index: 2;
   background: #ffffff;
+  display: flex;
+  align-items: center;
   flex-direction: column;
 `;
+
 const ModalTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 90%;
 `;
+
 const TitleText = styled.div``;
+
 const Line = styled.div`
-  background: "#1e1e1e";
+  background: #1e1e1e;
   width: 90%;
   height: 1px;
 `;
