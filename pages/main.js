@@ -5,10 +5,11 @@ import SquareInput from "../components/SquareInput";
 import PinkButton from "../components/PinkButton";
 import BasicBoard from "../components/BasicBoard";
 import Modal from "../components/Modal";
+import BoardWrite from "../pages/board/write";
 
 const Main = () => (
   <>
-    <BasicBoard></BasicBoard>
+    <BoardWrite></BoardWrite>
   </>
 );
 
