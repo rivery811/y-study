@@ -1,9 +1,27 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import WriteImg from "/public/images/write_image.svg";
 import Smile from "/public/images/smile.svg";
 import Pencil from "/public/images/pencil.svg";
 import Close from "/public/images/white_close.svg";
+
 const BoardWrite = () => {
+  const [contents, setContents] = useState([
+    { title: "", category: "", content: "" },
+  ]);
+
+  const getValue = (e) => {
+    const { name, value } = e.target;
+    setContents({
+      ...contents,
+      [name]: value,
+    });
+  };
+  const save = () => {
+    console.log(
+      `작성내용 : ${contents.title} ${contents.category} ${contents.content}`
+    );
+  };
   return (
     <Container>
       <TitleContainer>
@@ -12,17 +30,27 @@ const BoardWrite = () => {
       </TitleContainer>
 
       <ContentsContainer>
-        <InputTitle placeholder="제목을 입력해주세요."></InputTitle>
+        <InputTitle
+          name="title"
+          onChange={getValue}
+          placeholder="제목을 입력해주세요."
+        ></InputTitle>
         <SelecetWrap>
-          <SelecetBox>
+          <SelecetBox name="category" onChange={getValue}>
+            //for loop 으로 변경
             <option value="humor">유머</option>
+            <option value="issue">이슈</option>
           </SelecetBox>
           <div>
             <Smile />
             스티커
           </div>
         </SelecetWrap>
-        <TextAreaContents placeholder="내용을 입력해주세요."></TextAreaContents>
+        <TextAreaContents
+          name="content"
+          onChange={getValue}
+          placeholder="내용을 입력해주세요."
+        ></TextAreaContents>
         <ButtonWrap>
           <Button color="#637887">
             <div>
@@ -30,7 +58,7 @@ const BoardWrite = () => {
               취소
             </div>
           </Button>
-          <Button>
+          <Button onClick={save}>
             <div>
               <Pencil />
               등록
